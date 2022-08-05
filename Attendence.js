@@ -16,9 +16,7 @@ const FullTime=2;
 const PartTimeHrs=4;
 const FullTimeHrs=8;
 const WagePerHr=20;
-
-let empHrs=0;
-empCheck=Math.floor(Math.random()*3);
+let NumOfWrkDays=20;
 
 function WorkingHrs(empCheck)
 {
@@ -32,7 +30,11 @@ function WorkingHrs(empCheck)
             return 0;
     }
 }
-empCheck=Math.floor(Math.random()*3);
-empHrs=WorkingHrs(empCheck);
-let EmpWage=empHrs*WagePerHr;
-console.log("Emp Wage = "+EmpWage);
+let TotEmpHrs=0;
+for(let day=0;day<NumOfWrkDays;day++)
+{
+    let employment=Math.floor(Math.random()*3);
+    TotEmpHrs+=WorkingHrs(employment);
+}
+let empWage=TotEmpHrs*WagePerHr;
+console.log("Total Hrs : "+TotEmpHrs+" Emp Wage: "+empWage);
