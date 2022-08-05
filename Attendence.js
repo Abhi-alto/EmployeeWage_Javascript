@@ -30,29 +30,32 @@ function WorkingHrs(empCheck)
             return 0;
     }
 }
+let empDailyWageArray=new Array();                      //Array to store daily wages
 let TotEmpHrs=0;
-// for(let day=0;day<NumOfWrkDays;day++)
-// {
-//     let employment=Math.floor(Math.random()*3);
-//     TotEmpHrs+=WorkingHrs(employment);
-// }
-// let empWage=TotEmpHrs*WagePerHr;
-// console.log("Total Hrs : "+TotEmpHrs+" Emp Wage: "+empWage);
-
-let MaxHrsIn_Month=100;                 //UC5
+let MaxHrsIn_Month=100;                 
 let TotalWrkDays=0;
+
+function calcDailyWage( empHrs)
+{
+    return TotEmpHrs*WagePerHr;
+}
+
 while(TotEmpHrs<=MaxHrsIn_Month&&
       TotalWrkDays<NumOfWrkDays)
 {
     TotalWrkDays++;
     let empCheck=Math.floor(Math.random()*3);
-    TotEmpHrs+=WorkingHrs(empCheck);
+    let empHrs=WorkingHrs(empCheck);
+    TotEmpHrs+=empHrs;
     if(TotEmpHrs>100)
     {
         TotEmpHrs=100;
+        empDailyWageArray.push(calcDailyWage(empHrs));
         break;
     }
+    empDailyWageArray.push(calcDailyWage(empHrs));
 }
-empWage=TotEmpHrs*WagePerHr;
+empWage=calcDailyWage(TotEmpHrs);
 console.log("Total Days: "+TotalWrkDays+
-            " Total Hrs: "+TotEmpHrs+" Emp Wage: "+empWage);
+                " Total hrs: "+TotEmpHrs+" Emp Wage: "+empWage);
+
