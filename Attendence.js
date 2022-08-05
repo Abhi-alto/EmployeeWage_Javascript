@@ -31,10 +31,28 @@ function WorkingHrs(empCheck)
     }
 }
 let TotEmpHrs=0;
-for(let day=0;day<NumOfWrkDays;day++)
+// for(let day=0;day<NumOfWrkDays;day++)
+// {
+//     let employment=Math.floor(Math.random()*3);
+//     TotEmpHrs+=WorkingHrs(employment);
+// }
+// let empWage=TotEmpHrs*WagePerHr;
+// console.log("Total Hrs : "+TotEmpHrs+" Emp Wage: "+empWage);
+
+let MaxHrsIn_Month=100;                 //UC5
+let TotalWrkDays=0;
+while(TotEmpHrs<=MaxHrsIn_Month&&
+      TotalWrkDays<NumOfWrkDays)
 {
-    let employment=Math.floor(Math.random()*3);
-    TotEmpHrs+=WorkingHrs(employment);
+    TotalWrkDays++;
+    let empCheck=Math.floor(Math.random()*3);
+    TotEmpHrs+=WorkingHrs(empCheck);
+    if(TotEmpHrs>100)
+    {
+        TotEmpHrs=100;
+        break;
+    }
 }
-let empWage=TotEmpHrs*WagePerHr;
-console.log("Total Hrs : "+TotEmpHrs+" Emp Wage: "+empWage);
+empWage=TotEmpHrs*WagePerHr;
+console.log("Total Days: "+TotalWrkDays+
+            " Total Hrs: "+TotEmpHrs+" Emp Wage: "+empWage);
